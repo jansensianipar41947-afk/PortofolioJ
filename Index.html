@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jansen Marcell Brian Sianipar, S.Kom. | Portofolio Data Scientist &amp; Data Analyst</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for Visualisasi Data Interaktifs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        steel: {
+                            50: '#EFF6FF',
+                            200: '#BFDBFE',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                        },
+                        emerald: {
+                            500: '#10B981',
+                            600: '#059669',
+                        },
+                        slatebg: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        section[id] { scroll-margin-top: 4rem; }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
+</head>
+<body class="bg-slatebg text-slate-800 font-sans antialiased selection:bg-steel-500 selection:text-white custom-scrollbar">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 border-b border-slate-200 transition-all duration-200" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-2 group">
+                    <div class="w-9 h-9 rounded-lg bg-navy-900 text-white flex items-center justify-center font-mono font-bold text-lg group-hover:bg-steel-600 transition-colors">
+                        JS
+                    </div>
+                    <span class="font-bold text-slate-900 text-base sm:text-lg tracking-tight">Jansen Sianipar<span class="text-steel-500">.</span></span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-steel-600 transition-colors">Tentang</a>
+                    <a href="#skills" class="hover:text-steel-600 transition-colors">Keahlian</a>
+                    <a href="#projects" class="hover:text-steel-600 transition-colors">Proyek</a>
+                    <a href="#live-demo" class="hover:text-steel-600 transition-colors flex items-center gap-1.5 text-steel-600 font-semibold bg-steel-50 px-2.5 py-1 rounded-md border border-steel-200">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Demo Interaktif
+                    </a>
+                    <a href="#experience" class="hover:text-steel-600 transition-colors">Pengalaman</a>
+                    <a href="#contact" class="hover:text-steel-600 transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="openCvModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-sm transition-all transform active:scale-95">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Unduh CV</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Buka/tutup menu" aria-expanded="false" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="#about" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Tentang</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Keahlian</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Proyek Unggulan</a>
+            <a href="#live-demo" class="block px-3 py-2 rounded-md text-steel-600 font-semibold bg-steel-50">Demo Interaktif</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Pengalaman & Pendidikan</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Kontak</a>
+            <div class="pt-2">
+                <button onclick="openCvModal()" class="w-full flex justify-center items-center gap-2 px-4 py-2.5 rounded-lg bg-navy-900 text-white text-sm font-semibold">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Unduh CV (Resume ATS)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-slate-100/70 via-slatebg to-slatebg border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left: Profile Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>Terbuka untuk Posisi Data Analyst & Data Scientist</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-navy-900 tracking-tight leading-tight">
+                        Jansen Marcell Brian Sianipar, <span class="text-steel-600 font-mono text-2xl sm:text-4xl">S.Kom.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl font-semibold text-slate-700 leading-snug">
+                        Data Scientist & Data Analyst
+                        <span class="block text-steel-600 text-base sm:text-lg font-normal mt-1">
+                            Berfokus pada Deep Learning (LSTM/GRU), Peramalan Deret Waktu & Integrasi IoT
+                        </span>
+                    </p>
+
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                        Lulusan Ilmu Komputer Universitas Nurtanio Bandung dengan <strong>IPK 3.68</strong>. Berpengalaman dalam pembersihan data, analisis data eksploratif (EDA), dan pemodelan prediktif menggunakan algoritma deep learning. Terampil mengubah dataset deret waktu IoT yang kompleks menjadi wawasan bisnis yang dapat ditindaklanjuti.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-sm font-semibold shadow-lg shadow-navy-900/10 transition-all hover:shadow-steel-500/20 active:scale-95">
+                            <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+                            <span>Lihat Proyek Portofolio</span>
+                        </a>
+                        <a href="#live-demo" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold border border-slate-300 shadow-sm transition-all active:scale-95">
+                            <i data-lucide="bar-chart-2" class="w-4 h-4 text-steel-600"></i>
+                            <span>Lihat Demo Model</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="p-3 rounded-xl bg-white text-slate-700 hover:text-steel-600 border border-slate-300 shadow-sm transition-colors" title="Profil LinkedIn">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="p-3 rounded-xl bg-white text-slate-700 hover:text-steel-600 border border-slate-300 shadow-sm transition-colors" title="Repositori GitHub">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Quick Stats & Highlights Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-navy-900 text-white rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-navy-800">
+                        <!-- Decorative background glow -->
+                        <div class="absolute -right-12 -top-12 w-40 h-40 bg-steel-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="relative z-10 space-y-6">
+                            <div class="flex justify-between items-center border-b border-navy-700 pb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-slate-400 uppercase tracking-widest">Capaian Akademik</span>
+                                    <h3 class="text-lg font-bold text-white mt-0.5">S.Kom. Teknik Informatika</h3>
+                                </div>
+                                <span class="px-3 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono font-bold text-sm">
+                                    IPK 3.68
+                                </span>
+                            </div>
+
+                            <!-- Metrics Grid -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Akurasi Model</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">85.3%</div>
+                                    <span class="text-[11px] text-slate-400">Klasifikasi ISPU</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Efisiensi RAM</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-steel-500 mt-1">5.91 MB</div>
+                                    <span class="text-[11px] text-slate-400">GRU untuk Deployment On-Edge</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Ukuran Dataset</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">3,557</div>
+                                    <span class="text-[11px] text-slate-400">Sekuens IoT Bersih</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Sertifikasi</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">3+</div>
+                                    <span class="text-[11px] text-slate-400">Cisco & TOEFL ITP</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-800/40 rounded-xl p-3.5 border border-navy-700/40 text-xs text-slate-300 flex items-center gap-3">
+                                <i data-lucide="cpu" class="w-8 h-8 text-steel-500 flex-shrink-0"></i>
+                                <span>Berpengalaman men-deploy model deep learning ke mikrokontroler dengan memori terbatas (NodeMCU ESP8266).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Ringkasan Profesional</h2>
+                <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Profil Data Analyst & Data Scientist</p>
+                <div class="w-12 h-1 bg-steel-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Data Analytics & Cleaning -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-steel-500/10 text-steel-600 flex items-center justify-center mb-5">
+                        <i data-lucide="database-zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Pemrosesan Data & EDA</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Mahir membersihkan distribusi dataset yang berisik, penghapusan outlier (injeksi Gaussian Noise), interpolasi nilai yang hilang, dan penskalaan Min-Max untuk data deret waktu berdimensi tinggi.
+                    </p>
+                </div>
+
+                <!-- Card 2: Deep Learning & Machine Learning -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Pemodelan Prediktif</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Menguasai Recurrent Neural Network (LSTM & GRU) dan Ensemble ML (Random Forest). Berpengalaman langsung dalam optimasi hyperparameter dengan Grid Search untuk menekan tingkat kesalahan.
+                    </p>
+                </div>
+
+                <!-- Card 3: Business & IoT Integration -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900/10 text-navy-900 flex items-center justify-center mb-5">
+                        <i data-lucide="line-chart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Nilai Bisnis & IoT</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Berpengalaman menghubungkan telemetri perangkat keras secara real-time (sensor laser PMS5003T melalui HTTP API) ke dasbor analitik untuk pemantauan lingkungan dan bisnis yang strategis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS MATRIX SECTION -->
+    <section id="skills" class="py-16 md:py-20 bg-slatebg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Kompetensi Teknis</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Matriks Keahlian Terstruktur</p>
+                </div>
+                <p class="text-slate-500 text-sm mt-2 md:mt-0">Keunggulan utama untuk penyaringan cepat oleh ATS & rekruter</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Group 1: Data Science & ML -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-steel-600"></i>
+                        <span>Analitik Data & ML</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs list-disc list-outside pl-4 marker:text-steel-500">
+                        <li class="text-slate-700 font-medium">Python (Pandas, NumPy)</li>
+                        <li class="text-slate-700 font-medium">Scikit-Learn</li>
+                        <li class="text-slate-700 font-medium">Pembersihan Data & Scaler</li>
+                        <li class="text-slate-700 font-medium">Microsoft Excel & Entri Data</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Group 2: Deep Learning & Time-Series -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="network" class="w-4 h-4 text-steel-600"></i>
+                        <span>Deep Learning & Peramalan</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs list-disc list-outside pl-4 marker:text-steel-500">
+                        <li class="text-slate-700 font-medium">TensorFlow & Keras API</li>
+                        <li class="text-slate-700 font-medium">Arsitektur LSTM & GRU</li>
+                        <li class="text-slate-700 font-medium">Grid Search Hyperparameter</li>
+                        <li class="text-slate-700 font-medium">Metrik Confusion Matrix</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Group 3: IoT & Microcontrollers -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="cpu" class="w-4 h-4 text-steel-600"></i>
+                        <span>IoT & Edge Computing</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs list-disc list-outside pl-4 marker:text-steel-500">
+                        <li class="text-slate-700 font-medium">C++ / Arduino IDE</li>
+                        <li class="text-slate-700 font-medium">NodeMCU ESP8266</li>
+                        <li class="text-slate-700 font-medium">ThingSpeak Cloud API</li>
+                        <li class="text-slate-700 font-medium">Optimasi Memori On-Edge</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Group 4: Tools & Professional Competencies -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-steel-600"></i>
+                        <span>Tools & Visualisasi</span>
+                    </h3>
+                    <ul class="space-y-2.5 text-xs list-disc list-outside pl-4 marker:text-steel-500">
+                        <li class="text-slate-700 font-medium">Matplotlib & Visualisasi</li>
+                        <li class="text-slate-700 font-medium">Pemecahan Masalah Terstruktur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Etalase Portofolio</h2>
+                <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Proyek Data Science Unggulan</p>
+                <p class="text-slate-600 text-sm mt-2">Menunjukkan pemecahan masalah dunia nyata, akurasi pemodelan, dan eksekusi.</p>
+            </div>
+
+            <!-- Project 1: THESIS MAIN FEATURE -->
+            <div class="bg-slatebg border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    
+                    <!-- Left: Content & Metrics -->
+                    <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 rounded-md bg-navy-900 text-white text-[11px] font-mono font-semibold">Skripsi S1</span>
+                                <span class="px-2.5 py-1 rounded-md bg-steel-500/10 text-steel-600 border border-steel-500/20 text-[11px] font-medium">Deep Learning</span>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 text-[11px] font-medium">Perangkat Keras IoT</span>
+                            </div>
+
+                            <h3 class="text-lg sm:text-xl font-bold text-navy-900 leading-snug">
+                                ANALISIS KOMPARASI ALGORITMA LONG SHORT-TERM MEMORY (LSTM) DAN GATED RECURRENT UNIT (GRU) DENGAN OPTIMASI HYPERPARAMETER UNTUK PREDIKSI TREN POLUSI UDARA
+                            </h3>
+
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                                Studi komparasi yang menganalisis efisiensi prediksi antara algoritma LSTM dan GRU pada 3,557 data partikulat IoT skala mikro (PM2.5 & PM10) yang dikumpulkan secara mandiri di area parkir kampus Universitas Nurtanio.
+                            </p>
+
+                            <!-- Key Results Grid -->
+                            <div class="grid grid-cols-3 gap-3 my-6">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">Akurasi Regresi LSTM</span>
+                                    <div class="text-base sm:text-lg font-bold text-navy-900 mt-0.5">RMSE 17.76</div>
+                                    <span class="text-[10px] text-slate-500">MAE 10.13 µg/m³</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">Penggunaan RAM GRU</span>
+                                    <div class="text-base sm:text-lg font-bold text-emerald-600 mt-0.5">5.91 MB</div>
+                                    <span class="text-[10px] text-slate-500">vs LSTM 34.77 MB</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">Klasifikasi ISPU</span>
+                                    <div class="text-base sm:text-lg font-bold text-steel-600 mt-0.5">85.30%</div>
+                                    <span class="text-[10px] text-slate-500">F1-Score 85.37%</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-1">
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">Python</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">TensorFlow/Keras</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">Grid Search</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">ESP8266 + PMS5003T</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">ThingSpeak API</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200/80">
+                            <button onclick="openProjectModal()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold transition-all">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                <span>Baca Studi Kasus Lengkap</span>
+                            </button>
+                            <a href="#live-demo" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-xs font-semibold transition-all">
+                                <i data-lucide="play" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Demo Data Interaktif</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual Summary Box -->
+                    <div class="lg:col-span-5 bg-navy-900 p-6 sm:p-8 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-navy-800 relative">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-mono text-emerald-400"># REKOMENDASI SKRIPSI</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px]">LOGIKA TERVERIFIKASI</span>
+                            </div>
+
+                            <blockquote class="text-sm text-slate-300 italic leading-relaxed mb-6">
+                                "GRU sangat direkomendasikan untuk mikrokontroler IoT on-edge. Meskipun LSTM mencapai error regresi yang sedikit lebih rendah (RMSE 17.76 vs 18.19), GRU memakai RAM 6x lebih sedikit (5.91 MB) dan menghasilkan akurasi klasifikasi ISPU PM10 yang lebih unggul (85.30%)."
+                            </blockquote>
+
+                            <div class="space-y-3 font-mono text-xs text-slate-300">
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Akuisisi Data:</span>
+                                    <span>IoT primer (interval 1 menit)</span>
+                                </div>
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Pra-pemrosesan:</span>
+                                    <span>Min-Max Scaler + Gaussian Noise</span>
+                                </div>
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Jendela Sekuens:</span>
+                                    <span>10 Timestep (Look-back)</span>
+                                </div>
+                                <div class="flex justify-between py-1.5">
+                                    <span class="text-slate-400">Optimasi:</span>
+                                    <span>Epoch 50, Batch 64, LR 0.001</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-navy-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>Penulis: Jansen M. B. Sianipar</span>
+                            <span class="font-mono">Lulus 2026</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Project 2: VINIX7 INTERNSHIP -->
+            <div class="bg-slatebg border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-steel-500/10 text-steel-600 border border-steel-500/20 text-[11px] font-mono font-semibold">Pengalaman Magang</span>
+                            <span class="text-xs text-slate-500">Vinix7 • Kota Cimahi</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-navy-900">
+                            Analisis Data Eksploratif & Pemodelan Prediktif Bisnis
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Membantu tim data science senior dalam eksplorasi data, pra-pemrosesan dataset, dan persiapan data untuk pemodelan ML dasar menggunakan Python. Menyusun catatan eksperimen secara sistematis dan mempresentasikan laporan temuan analitis secara berkala untuk mendukung keputusan bisnis yang strategis.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Analisis Data Eksploratif</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Pembersihan Data</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Machine Learning</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Pelaporan Analitis</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-white p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <div class="text-xs font-bold text-navy-900 uppercase tracking-wider font-mono">Dampak Utama Magang</div>
+                        <ul class="space-y-2 text-xs text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Menyiapkan pipeline data terstruktur untuk analisis pola perusahaan.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Mendokumentasikan iterasi eksperimen secara sistematis agar riset dapat direproduksi.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Berkolaborasi langsung dengan tim teknis lintas fungsi.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LIVE DEMO (CHART.JS DATA VISUALIZER) -->
+    <section id="live-demo" class="py-16 md:py-20 bg-navy-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Visualisasi Data Interaktif
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Benchmark Peramalan Model Skripsi</h2>
+                    <p class="text-slate-400 text-sm mt-1">Perbandingan cuplikan data uji nyata: IoT PMS5003T Aktual vs Prediksi LSTM vs Prediksi GRU</p>
+                </div>
+
+                <!-- Parameter Toggle Controls -->
+                <div class="flex items-center gap-2 mt-4 md:mt-0 bg-navy-800 p-1.5 rounded-xl border border-navy-700">
+                    <button id="btn-pm25" onclick="switchData('pm25')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm">
+                        Parameter PM2.5
+                    </button>
+                    <button id="btn-pm10" onclick="switchData('pm10')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white">
+                        Parameter PM10
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="bg-navy-800 rounded-2xl p-4 sm:p-6 border border-navy-700 shadow-2xl">
+                <div class="h-72 sm:h-96 w-full">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-navy-700/60 text-xs">
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-slate-200"></div>
+                        <div>
+                            <span class="text-slate-400 block">Data Aktual</span>
+                            <span class="text-white font-medium">Pembacaan Sensor Sebenarnya (Ground Truth)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-steel-500"></div>
+                        <div>
+                            <span class="text-slate-400 block">Prediksi LSTM</span>
+                            <span class="text-white font-medium">Regresi Terbaik (RMSE: 17.76)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        <div>
+                            <span class="text-slate-400 block">Prediksi GRU</span>
+                            <span class="text-white font-medium">Memori Edge Terbaik (RAM: 5.91MB)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Experience Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-steel-500/10 text-steel-600 flex items-center justify-center font-bold">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-navy-900">Pengalaman Kerja</h2>
+                            <p class="text-slate-500 text-xs">Latar Belakang Data Science Praktis</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 relative pl-6 border-l-2 border-slate-200">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-steel-600 border-4 border-white"></div>
+                            <div class="bg-slatebg p-5 rounded-2xl border border-slate-200">
+                                <div class="flex justify-between items-start flex-wrap gap-2">
+                                    <div>
+                                        <h3 class="font-bold text-navy-900 text-base">Junior Data Scientist</h3>
+                                        <span class="text-xs font-semibold text-steel-600">Vinix7</span>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded bg-white text-slate-600 text-xs font-mono font-medium border border-slate-200">
+                                        Sep 2024 - Nov 2024
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Kota Cimahi, Jawa Barat, Indonesia</p>
+                                <ul class="mt-3 space-y-1.5 text-xs text-slate-600 list-disc list-inside">
+                                    <li>Mengeksplorasi distribusi dataset dan menjalankan pipeline pembersihan data secara menyeluruh menggunakan Python.</li>
+                                    <li>Mendukung tim dalam mengimplementasikan algoritma ML dasar untuk pengenalan pola bisnis.</li>
+                                    <li>Mendokumentasikan eksperimen riset dan mempresentasikan temuan secara berkala kepada staf engineering senior.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-navy-900">Latar Belakang Pendidikan</h2>
+                            <p class="text-slate-500 text-xs">Fondasi Akademik</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 relative pl-6 border-l-2 border-slate-200">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-white"></div>
+                            <div class="bg-slatebg p-5 rounded-2xl border border-slate-200">
+                                <div class="flex justify-between items-start flex-wrap gap-2">
+                                    <div>
+                                        <h3 class="font-bold text-navy-900 text-base">Sarjana Ilmu Komputer (S.Kom)</h3>
+                                        <span class="text-xs font-semibold text-emerald-600">Universitas Nurtanio Bandung</span>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-700 text-xs font-mono font-bold">
+                                        IPK: 3.68 / 4.00
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Program Studi Teknik Informatika • Lulus 2026</p>
+                                <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+                                    <strong>Judul Skripsi:</strong> ANALISIS KOMPARASI ALGORITMA LONG SHORT-TERM MEMORY (LSTM) DAN GATED RECURRENT UNIT (GRU) DENGAN OPTIMASI HYPERPARAMETER UNTUK PREDIKSI TREN POLUSI UDARA
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+    <section class="py-16 bg-slatebg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Kredensial</h2>
+                <p class="text-2xl font-bold text-navy-900 mt-1">Sertifikasi & Kemampuan Bahasa</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Cert 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-steel-500/10 text-steel-600 flex items-center justify-center font-bold">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">2022 - 2026</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">Data Analyst Essentials</h3>
+                        <p class="text-xs text-slate-600 mt-1">Cisco Networking Academy</p>
+                        <p class="text-xs text-slate-500 mt-2">Pra-pemrosesan data, analitik Python, dan dasar-dasar visualisasi data.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Kredensial Terverifikasi</span>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900/10 text-navy-900 flex items-center justify-center font-bold">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">Feb 2026 - Feb 2028</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">Ethical Hacker</h3>
+                        <p class="text-xs text-slate-600 mt-1">Cisco Networking Academy</p>
+                        <p class="text-xs text-slate-500 mt-2">Dasar-dasar keamanan siber, analisis lalu lintas jaringan & perlindungan data.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Sertifikasi Aktif</span>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+                                <i data-lucide="languages" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">Jun 2026 - Jun 2028</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">TOEFL ITP Prediction Test</h3>
+                        <p class="text-xs text-slate-600 mt-1">BTB English Course</p>
+                        <p class="text-xs text-slate-500 mt-2">Listening bahasa Inggris profesional, struktur tata bahasa, dan pemahaman bacaan teknis.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Tingkat Kemahiran Kerja</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative overflow-hidden rounded-[2rem] border border-slate-700/60 px-6 py-14 sm:px-12 sm:py-20 lg:px-20 lg:py-24"
+                 style="background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(180,110,70,0.28), transparent 60%), linear-gradient(135deg, #0B1020 0%, #151A2C 55%, #1A1B2B 100%);">
+                <div class="relative z-10 max-w-2xl">
+                    <h2 class="text-4xl sm:text-6xl font-extrabold text-slate-100 tracking-tighter leading-[1.05]">
+                        Punya data yang perlu dianalisis?
+                    </h2>
+                    <p class="text-slate-400 text-base sm:text-lg leading-relaxed mt-6 max-w-md">
+                        Saya berbasis di Bandung / Cimahi, Jawa Barat. Kirim pesan dan saya balas secepatnya.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 mt-8">
+                        <a href="mailto:jansensianipar41947@gmail.com"
+                           class="px-7 py-4 rounded-2xl bg-[#FFB454] hover:bg-[#FFC070] text-slate-900 text-sm font-bold transition-colors">
+                            Kirim email
+                        </a>
+                        <button type="button" id="copy-email-btn" onclick="copyEmail()"
+                           class="px-7 py-4 rounded-2xl bg-[#101426] hover:bg-[#1A2038] border border-slate-700/70 text-white text-sm font-bold transition-colors">
+                            Salin email
+                        </button>
+                        <a href="https://wa.me/628888412254" target="_blank" rel="noopener"
+                           class="px-7 py-4 rounded-2xl bg-[#101426] hover:bg-[#1A2038] border border-slate-700/70 text-white text-sm font-bold transition-colors">
+                            WhatsApp
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener"
+                           class="px-7 py-4 rounded-2xl bg-[#101426] hover:bg-[#1A2038] border border-slate-700/70 text-white text-sm font-bold transition-colors">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slatebg border-t border-slate-200 text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                © 2026 Jansen Marcell Brian Sianipar, S.Kom. Seluruh hak cipta dilindungi.
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="hover:text-slate-800">Kembali ke Atas</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-slate-800">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="hover:text-slate-800">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: THESIS FULL CASE STUDY -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-navy-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl custom-scrollbar relative">
+            <button onclick="closeProjectModal()" aria-label="Tutup" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <span class="px-2.5 py-1 rounded bg-navy-900 text-white text-[11px] font-mono">Rincian Lengkap Skripsi S-1</span>
+            <h3 class="text-lg sm:text-xl font-bold text-navy-900 mt-3 pr-10 leading-snug">
+                ANALISIS KOMPARASI ALGORITMA LONG SHORT-TERM MEMORY (LSTM) DAN GATED RECURRENT UNIT (GRU) DENGAN OPTIMASI HYPERPARAMETER UNTUK PREDIKSI TREN POLUSI UDARA
+            </h3>
+
+            <div class="mt-6 space-y-6 text-sm text-slate-600 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">1. Latar Belakang & Rumusan Masalah</h4>
+                    <p>
+                        Polusi udara dari pergerakan kendaraan bermotor di area kampus memicu fluktuasi partikulat skala mikro yang ekstrem (PM2.5 & PM10). Stasiun pemantauan pemerintah berskala makro tidak mampu menangkap lonjakan lokal ini secara real-time. Penelitian ini membangun node akuisisi IoT khusus (NodeMCU ESP8266 + sensor laser PMS5003T) yang mengirimkan data setiap 1 menit ke penyimpanan cloud ThingSpeak.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">2. Metodologi & Pipeline Pra-pemrosesan</h4>
+                    <ul class="list-disc list-inside space-y-1 text-xs">
+                        <li><strong>Pembersihan Data:</strong> Penghapusan outlier untuk pembacaan >300 µg/m³ (menghilangkan gangguan listrik pada perangkat keras).</li>
+                        <li><strong>Augmentasi Data:</strong> Mengatasi ketidakseimbangan kelas ISPU dengan mengintegrasikan data rekan dan menerapkan injeksi Gaussian Noise serta interpolasi linear lokal (mencapai 3,557 baris seimbang).</li>
+                        <li><strong>Pembentukan Sekuens:</strong> Membentuk sliding window sekuensial 3D [sampel, 10 timestep, 2 fitur].</li>
+                        <li><strong>Tuning Hyperparameter:</strong> Grid Search menyeluruh pada Epoch {50, 100} dan Batch Size {32, 64}.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slatebg p-4 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-navy-900 text-sm mb-2">3. Ringkasan Evaluasi Kuantitatif</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
+                        <div>
+                            <span class="text-slate-500 block">Model LSTM (50 Epoch, Batch 64):</span>
+                            <span class="text-navy-900 font-bold">• RMSE: 17.7647 µg/m³</span><br>
+                            <span class="text-navy-900 font-bold">• MAE: 10.1312 µg/m³</span><br>
+                            <span class="text-slate-500">• RAM Inferensi Uji: 34.77 MB</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block">Model GRU (50 Epoch, Batch 64):</span>
+                            <span class="text-navy-900 font-bold">• RMSE: 18.1988 µg/m³</span><br>
+                            <span class="text-navy-900 font-bold">• Akurasi ISPU PM10: 85.30% (F1: 85.37%)</span><br>
+                            <span class="text-emerald-600 font-bold">• RAM Inferensi Uji: 5.91 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">4. Rekomendasi Praktis untuk HR & Tim Teknis</h4>
+                    <p>
+                        Meskipun LSTM menghasilkan error regresi yang sedikit lebih rendah, <strong>GRU sangat direkomendasikan untuk deployment di edge</strong> pada NodeMCU ESP8266 karena jejak memorinya 6x lebih kecil (5.91 MB vs 34.77 MB) sehingga mencegah crash sistem akibat Out-of-Memory (OOM).
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-200 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-navy-900 text-white text-xs font-semibold">
+                    Tutup Studi Kasus
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CV DOWNLOAD SIMULATOR -->
+    <div id="cv-modal" class="fixed inset-0 z-50 hidden bg-navy-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-center">
+            <button onclick="closeCvModal()" aria-label="Tutup" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-steel-500/10 text-steel-600 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="file-badge" class="w-6 h-6"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-navy-900">Unduh Resume ATS</h3>
+            <p class="text-slate-600 text-xs mt-2">
+                CV_ATS_JANSEN MARCELL BRIAN SIANIPAR.pdf
+            </p>
+
+            <div class="bg-slatebg p-4 rounded-xl border border-slate-200 my-6 text-left text-xs space-y-2 text-slate-600 font-mono">
+                <div class="flex justify-between">
+                    <span>Format:</span>
+                    <span class="font-bold text-navy-900">PDF Sesuai ATS</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Posisi Target:</span>
+                    <span class="font-bold text-navy-900">Data Scientist / Analyst</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>IPK:</span>
+                    <span class="font-bold text-emerald-600">3.68 (S.Kom)</span>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="triggerCvDownload()" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-md transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Konfirmasi Unduh PDF</span>
+                </button>
+                <button onclick="closeCvModal()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all">
+                    Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR CHART & INTERACTION -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Modals Logic
+        function openProjectModal() {
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+        function openCvModal() {
+            document.getElementById('cv-modal').classList.remove('hidden');
+        }
+        function closeCvModal() {
+            document.getElementById('cv-modal').classList.add('hidden');
+        }
+        function triggerCvDownload() {
+            alert('CV ATS Jansen Marcell Brian Sianipar, S.Kom. berhasil disiapkan untuk diunduh.');
+            closeCvModal();
+        }
+
+        // Close modals with Escape or backdrop click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { closeProjectModal(); closeCvModal(); }
+        });
+        ['project-modal', 'cv-modal'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('click', (e) => { if (e.target === el) el.classList.add('hidden'); });
+        });
+
+
+        // Salin email
+        function copyEmail() {
+            const email = 'jansensianipar41947@gmail.com';
+            const btn = document.getElementById('copy-email-btn');
+            const done = () => {
+                btn.textContent = 'Tersalin!';
+                setTimeout(() => { btn.textContent = 'Salin email'; }, 1800);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(done).catch(() => window.prompt('Salin email ini:', email));
+            } else {
+                window.prompt('Salin email ini:', email);
+            }
+        }
+
+        // CHART.JS IMPLEMENTATION (Test Set Excerpt)
+        const timeLabels = ['13:40', '13:41', '13:42', '13:43', '13:44', '13:45', '13:46', '13:47', '13:48', '13:49'];
+        
+        const chartDataSets = {
+            pm25: {
+                actual: [78.0, 76.0, 35.0, 38.0, 41.0, 66.0, 70.0, 71.0, 84.0, 84.0],
+                lstm:   [84.8, 83.0, 81.0, 50.9, 41.2, 39.2, 50.3, 60.2, 67.8, 78.9],
+                gru:    [85.3, 83.5, 81.7, 51.8, 41.9, 39.2, 52.1, 57.7, 63.8, 76.1]
+            },
+            pm10: {
+                actual: [86.0, 84.0, 80.0, 77.0, 75.0, 75.0, 79.0, 77.0, 78.0, 78.0],
+                lstm:   [88.2, 85.1, 82.3, 78.9, 76.2, 74.8, 77.5, 76.8, 77.2, 77.9],
+                gru:    [87.9, 84.8, 81.9, 78.1, 75.9, 75.1, 78.1, 77.1, 77.8, 78.2]
+            }
+        };
+
+        let currentChart = null;
+
+        function initChart(param = 'pm25') {
+            const ctx = document.getElementById('forecastChart').getContext('2d');
+            
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeLabels,
+                    datasets: [
+                        {
+                            label: 'Sensor Aktual (Ground Truth)',
+                            data: chartDataSets[param].actual,
+                            borderColor: '#E2E8F0',
+                            backgroundColor: '#E2E8F0',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'Prediksi Model LSTM',
+                            data: chartDataSets[param].lstm,
+                            borderColor: '#3B82F6',
+                            backgroundColor: '#3B82F6',
+                            borderWidth: 2.5,
+                            borderDash: [4, 4],
+                            pointRadius: 3,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Prediksi Model GRU',
+                            data: chartDataSets[param].gru,
+                            borderColor: '#10B981',
+                            backgroundColor: '#10B981',
+                            borderWidth: 2.5,
+                            pointRadius: 3,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false // Using custom HTML legend below
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#0F172A',
+                            titleFont: { family: 'JetBrains Mono', size: 12 },
+                            bodyFont: { family: 'Inter', size: 12 },
+                            padding: 10,
+                            borderColor: '#334155',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                            ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 11 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                            ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 11 } },
+                            title: {
+                                display: true,
+                                text: 'Konsentrasi (µg/m³)',
+                                color: '#94A3B8',
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function switchData(param) {
+            const btn25 = document.getElementById('btn-pm25');
+            const btn10 = document.getElementById('btn-pm10');
+
+            if (param === 'pm25') {
+                btn25.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm";
+                btn10.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white";
+            } else {
+                btn10.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm";
+                btn25.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white";
+            }
+            initChart(param);
+        }
+
+        // Window Load
+        window.addEventListener('load', () => initChart('pm25'));
+    </script>
+</body>
+</html>

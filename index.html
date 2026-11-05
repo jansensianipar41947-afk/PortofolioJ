@@ -90,14 +90,6 @@
                     <a href="#contact" class="hover:text-steel-600 transition-colors">Kontak</a>
                 </nav>
 
-                <!-- Action Button -->
-                <div class="hidden md:flex items-center space-x-3">
-                    <button onclick="openCvModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-sm transition-all transform active:scale-95">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Unduh CV</span>
-                    </button>
-                </div>
-
                 <!-- Mobile Hamburger Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" aria-label="Buka/tutup menu" aria-expanded="false" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
@@ -115,12 +107,6 @@
             <a href="#live-demo" class="block px-3 py-2 rounded-md text-steel-600 font-semibold bg-steel-50">Demo Interaktif</a>
             <a href="#experience" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Pengalaman & Pendidikan</a>
             <a href="#contact" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Kontak</a>
-            <div class="pt-2">
-                <button onclick="openCvModal()" class="w-full flex justify-center items-center gap-2 px-4 py-2.5 rounded-lg bg-navy-900 text-white text-sm font-semibold">
-                    <i data-lucide="download" class="w-4 h-4"></i>
-                    <span>Unduh CV (Resume ATS)</span>
-                </button>
-            </div>
         </div>
     </header>
 
@@ -821,49 +807,6 @@
         </div>
     </div>
 
-    <!-- MODAL 2: CV DOWNLOAD SIMULATOR -->
-    <div id="cv-modal" class="fixed inset-0 z-50 hidden bg-navy-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-center">
-            <button onclick="closeCvModal()" aria-label="Tutup" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-500">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <div class="w-12 h-12 rounded-2xl bg-steel-500/10 text-steel-600 flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="file-badge" class="w-6 h-6"></i>
-            </div>
-
-            <h3 class="text-xl font-bold text-navy-900">Unduh Resume ATS</h3>
-            <p class="text-slate-600 text-xs mt-2">
-                CV_ATS_JANSEN MARCELL BRIAN SIANIPAR.pdf
-            </p>
-
-            <div class="bg-slatebg p-4 rounded-xl border border-slate-200 my-6 text-left text-xs space-y-2 text-slate-600 font-mono">
-                <div class="flex justify-between">
-                    <span>Format:</span>
-                    <span class="font-bold text-navy-900">PDF Sesuai ATS</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Posisi Target:</span>
-                    <span class="font-bold text-navy-900">Data Scientist / Analyst</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>IPK:</span>
-                    <span class="font-bold text-emerald-600">3.68 (S.Kom)</span>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <button onclick="triggerCvDownload()" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-md transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="download" class="w-4 h-4"></i>
-                    <span>Konfirmasi Unduh PDF</span>
-                </button>
-                <button onclick="closeCvModal()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all">
-                    Batal
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- JAVASCRIPT FOR CHART & INTERACTION -->
     <script>
         // Initialize Lucide Icons
@@ -888,22 +831,12 @@
         function closeProjectModal() {
             document.getElementById('project-modal').classList.add('hidden');
         }
-        function openCvModal() {
-            document.getElementById('cv-modal').classList.remove('hidden');
-        }
-        function closeCvModal() {
-            document.getElementById('cv-modal').classList.add('hidden');
-        }
-        function triggerCvDownload() {
-            alert('CV ATS Jansen Marcell Brian Sianipar, S.Kom. berhasil disiapkan untuk diunduh.');
-            closeCvModal();
-        }
 
         // Close modals with Escape or backdrop click
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') { closeProjectModal(); closeCvModal(); }
+            if (e.key === 'Escape') { closeProjectModal(); }
         });
-        ['project-modal', 'cv-modal'].forEach(id => {
+        ['project-modal'].forEach(id => {
             const el = document.getElementById(id);
             el.addEventListener('click', (e) => { if (e.target === el) el.classList.add('hidden'); });
         });
